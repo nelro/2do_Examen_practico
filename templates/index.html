@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h2>SEGUNDO PARCIAL TEM-742</h2>
+        <p>Nombre: Nelson Rodrigo Mamani Cuyuña<br>Carnet: 6958773 LP</p>
+    </div>
+
+    <div class="container">
+        <h1>Gestión de productos</h1>
+        <a href="{{url_for('nuevo_producto')}}" class="btn-nuevo">Nuevo producto</a>
+
+        <table class="table-productos">
+            <thead>
+                <tr>
+                    <th>Id#</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Categoría</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in productos %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.nombre }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>{{ item.precio }}</td>
+                    <td>{{ item.fecha_vencimiento }}</td>
+                    <td>{{ item.categoria }}</td>
+                    <td><a href="{{url_for('editar_producto',id=item.id)}}" class="btn-editar">Editar</a></td>
+                    <td><a href="{{url_for('eliminar_producto',id=item.id)}}" class="btn-eliminar">Eliminar</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
